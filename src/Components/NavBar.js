@@ -28,11 +28,19 @@ const H1 = styled.h1`
     margin-left: 15px;
 `;
 
+const LoginImg = styled.img`
+    :hover{
+        filter: drop-shadow(3px 5px 5px  #104000);
+    }
+    
+`;
+
 const ImgLogo =styled.img`
     width: 50px;
 `;
 
 const LogIn = styled.button`
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,7 +49,11 @@ const LogIn = styled.button`
     color: inherit;
     font-size: 16px;
     line-height: 19px;
-    cursor: pointer;
+    cursor: pointer;  
+    :hover{
+        filter: drop-shadow(3px 5px 5px  #104000);
+    }
+    
 `;
 
 export const NavBar = () => (
@@ -51,6 +63,6 @@ export const NavBar = () => (
             <H1>MrDonald's</H1>
         </Logo>
         
-        <LogIn><img src={LogInImg} alt="login"/>войти</LogIn>
+        <LogIn><LoginImg src={LogInImg} alt="login"/>войти</LogIn>
     </NavBarStyled>
 )
