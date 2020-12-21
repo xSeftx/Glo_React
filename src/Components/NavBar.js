@@ -48,8 +48,7 @@ const LogIn = styled.button`
     border: none;
     color: inherit;
     font-size: 16px;
-    line-height: 19px;
-    cursor: pointer;  
+    line-height: 19px;      
     :hover{
         filter: drop-shadow(3px 5px 5px  #104000);
     }
