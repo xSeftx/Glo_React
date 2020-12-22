@@ -21,16 +21,22 @@ const MenuBanner = styled.div`
   background-position: center;
 `;
 
-export const Menu = () => (
+export const Menu = ({ setOpenItem }) => (
     <MenuStyled>
         <MenuBanner/>
         <Section>
             <h2>Бургеры</h2>
-            <ListItem itemList={dbMenu.burger}/>
+            <ListItem 
+                itemList={dbMenu.burger}
+                setOpenItem={setOpenItem}
+            />
         </Section>
         <Section>
             <h2>Загустки / Напитки</h2>
-            <ListItem itemList={dbMenu.other}/>
+            <ListItem 
+                itemList={dbMenu.other}
+                setOpenItem={setOpenItem}
+            />
         </Section>
 
     </MenuStyled>
