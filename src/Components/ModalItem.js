@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from './Button';
+import {Button} from './Button';
 
 const Overlay =styled.div`
     position: fixed;
@@ -71,7 +71,7 @@ export const ModalItem = ({ openItem, setOpenItem }) => {
                     <span>{openItem.name}</span>
                     <span>{openItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</span>
                 </Price>
-            <Button text='Добавить'/>
+            <Button>Добавить</Button>
             </Description>
         </Modal>
 
