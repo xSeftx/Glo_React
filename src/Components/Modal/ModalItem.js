@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Button} from '../Style/Button';
+import {CountItem} from './CountItem';
+import {useCount} from '../Hooks/useCount';
+import {totalPriceItems} from '../Functions/secondaryFunction';
+import {formatCurrency} from '../Functions/secondaryFunction';
 
 const Overlay =styled.div`
     position: fixed;
@@ -25,8 +29,7 @@ const Modal = styled.div`
 
 const Description = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column;  
   justify-content: space-between;
   padding-bottom: 43px;
   flex: 1 0 auto;
@@ -51,8 +54,15 @@ const Price = styled.div`
   font-weight: normal;
 `;
 
+const TotalPriceItem = styled.div`
+  display: flex;  
+  justify-content: space-between;
+  margin: 20px;
+`;
 
 export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
+
+    const counter = useCount();
 
     const closeModal = (e) => {
         if (e.target.id === "overlay") {
@@ -61,8 +71,10 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
     };
 
     const order = {
-        ...openItem
+        ...openItem,
+        count: counter.count
     };
+    
 
     const  addToOrder = () =>  {
         setOrders ([...orders, order])
@@ -78,8 +90,13 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
             <Description>
                 <Price>
                     <span>{openItem.name}</span>
-                    <span>{openItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</span>
+                    <span>{formatCurrency(openItem.price)}</span>
                 </Price>
+                <CountItem {...counter}/>
+                <TotalPriceItem>
+                    <span>Цена</span>
+                    <span>{formatCurrency(totalPriceItems(order))}</span>
+                </TotalPriceItem>
             <Button onClick={addToOrder}>Добавить</Button>
             </Description>
         </Modal>
